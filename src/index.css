@@ -15,10 +15,10 @@ body {
 
 .app {
   width: 90%;
-  padding: 1rem;
+  padding-top: 25px;
   border-radius: 12px;
   background-color: white;
-  margin: 3rem auto;
+  margin: 6rem auto;
 }
 
 .form-control {
