@@ -1,4 +1,4 @@
-import { Link, Outlet} from "react-router-dom";
+import { Link, NavLink, Outlet} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -19,18 +19,18 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav ms-auto py-0">
-            <Link to={`/`} className="nav-item nav-link">
+            <NavLink  to={`/`} className="nav-item nav-link">
               Home
-            </Link>
-            <Link to={`/about`} className="nav-item nav-link">
+            </NavLink>
+            <NavLink  to={`/about`} className="nav-item nav-link">
               About
-            </Link>
-            <Link to={`/service`} className="nav-item nav-link">
+            </NavLink>
+            <NavLink  to={`/service`} className="nav-item nav-link">
               Services
-            </Link>
-            <Link to={`/packages`} className="nav-item nav-link">
+            </NavLink>
+            <NavLink  to={`/packages`} className="nav-item nav-link">
               Packages
-            </Link>
+            </NavLink>
             <div className="nav-item dropdown">
               <Link
                 to={`#`}
@@ -57,13 +57,13 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <Link to={``} className="nav-item nav-link">
+            <NavLink  to={``} className="nav-item nav-link">
               Contact
-            </Link>
+            </NavLink>
           </div>
-          <Link to={``} className="btn btn-primary rounded-pill py-2 px-4">
+          <NavLink  to={``} className="btn btn-primary rounded-pill py-2 px-4">
             Register
-          </Link>
+          </NavLink>
         </div>
       </nav>
 {/* 

@@ -1,7 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-const Booking = () =>{
-
+const Booking = (props) =>{
     // const  person  = useLoaderData();
     // console.log(person);
     return (
