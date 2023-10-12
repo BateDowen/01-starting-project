@@ -11,7 +11,6 @@ const PackagesPage = () => {
   
   useEffect(() => {
     getAll().then((res) => {
-      
       setPackages(
         res["-NfW1NX3j5b-YBEoBkRl"].map((x) => {
           return (

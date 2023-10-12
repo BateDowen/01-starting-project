@@ -13,6 +13,7 @@ import ServicePage from "./components/travel-agency-html-template/ServicePage/Se
 import ErrorPage from "./components/travel-agency-html-template/ErrorPage/ErrorPage";
 import PackagesPage from "./components/travel-agency-html-template/PackagePage.js/PackagePage";
 import Booking from "./components/travel-agency-html-template/PackagePage.js/Booking";
+import Register from "./components/travel-agency-html-template/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         path: '/service',
         element: <ServicePage />
       },
+      {
+        path: '/register',
+        element: <Register />
+      }
       
     ],
     errorElement: <ErrorPage />

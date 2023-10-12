@@ -31,37 +31,36 @@ const Navbar = () => {
             <NavLink  to={`/packages`} className="nav-item nav-link">
               Packages
             </NavLink>
-            <div className="nav-item dropdown">
-              <Link
+            <div className="" >
+              <select
+              name="pages"
                 to={`#`}
-                className="nav-link dropdown-toggle"
+                className="btn btn-lg btn-primary btn-lg-square"
                 data-bs-toggle="dropdown"
+                style={{width: '150px', marginTop: '26px', marginRight: '15px'}}
               >
-                Pages
-              </Link>
-              <div className="dropdown-menu m-0">
-                <Link to={``} className="dropdown-item">
+                <option to={``} className="dropdown-item">
                   Destination
-                </Link>
-                <Link to={``} className="dropdown-item">
+                </option>
+                <option to={``} className="dropdown-item">
                   Booking
-                </Link>
-                <Link to={``} className="dropdown-item">
+                </option>
+                <option to={``} className="dropdown-item">
                   Travel Guides
-                </Link>
-                <Link to={``} className="dropdown-item">
+                </option>
+                <option to={``} className="dropdown-item">
                   Testimonial
-                </Link>
-                <Link to={``} className="dropdown-item">
+                </option>
+                <option to={``} className="dropdown-item">
                   404 Page
-                </Link>
-              </div>
+                </option>
+              </select>
             </div>
             <NavLink  to={``} className="nav-item nav-link">
               Contact
             </NavLink>
           </div>
-          <NavLink  to={``} className="btn btn-primary rounded-pill py-2 px-4">
+          <NavLink  to={`/register`} className="btn btn-primary rounded-pill py-2 px-4">
             Register
           </NavLink>
         </div>
