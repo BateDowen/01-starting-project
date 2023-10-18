@@ -1,4 +1,4 @@
-const baseUrl = 'https://fir-custom-hook-49c71-default-rtdb.firebaseio.com/packages.json/';
+const baseUrl = 'https://fir-custom-hook-49c71-default-rtdb.firebaseio.com/';
 
 async function request (method,url,data){
     const options = {

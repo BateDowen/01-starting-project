@@ -1,15 +1,22 @@
 import { useState } from "react";
+import * as authService from "../../Utils/utils";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [isValid,setIsValid] = useState(true);
     const [isChecked,setIsChecked] = useState(false);
     const [currentText, setCurrentText] = useState('')
+    const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
     let {email, password} = Object.fromEntries(formData);
-    console.log(email);
+    const userRegistration = {email, password};
+    authService.register(userRegistration);
+    navigate('/login');
+
+    
   };
 
   const onChangeHandler = (e) =>{

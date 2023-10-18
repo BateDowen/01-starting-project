@@ -1,6 +1,15 @@
-import { Link, NavLink, Outlet} from "react-router-dom";
+import { Link, NavLink, Outlet, Route, useNavigate} from "react-router-dom";
+import Slider from "../Slider/Slider";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth-context";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
+console.log(authCtx);
+  const onChangeRoute =(e) =>{
+    navigate(e)
+  }
   return (
     <div className="container-fluid position-top p-0">
       <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -34,10 +43,10 @@ const Navbar = () => {
             <div className="" >
               <select
               name="pages"
-                to={`#`}
                 className="btn btn-lg btn-primary btn-lg-square"
                 data-bs-toggle="dropdown"
                 style={{width: '150px', marginTop: '26px', marginRight: '15px'}}
+                onChange={ev => onChangeRoute(ev.currentTarget.value)}
               >
                 <option to={``} className="dropdown-item">
                   Destination
@@ -51,18 +60,27 @@ const Navbar = () => {
                 <option to={``} className="dropdown-item">
                   Testimonial
                 </option>
-                <option to={``} className="dropdown-item">
-                  404 Page
-                </option>
+                <option value={'/slider'} className="dropdown-item" >
+                
+                  Slider
+                </option> 
+                
               </select>
             </div>
             <NavLink  to={``} className="nav-item nav-link">
               Contact
             </NavLink>
           </div>
-          <NavLink  to={`/register`} className="btn btn-primary rounded-pill py-2 px-4">
+          {authCtx ? <div>Welcome, {authCtx}</div> :  
+          <>
+            <NavLink  to={`/login`} className="btn btn-primary rounded-pill py-2 px-4">
+              Login
+            </NavLink>
+            <NavLink  to={`/register`} className="btn btn-primary rounded-pill py-2 px-4">
             Register
-          </NavLink>
+            </NavLink>
+          </>
+          }
         </div>
       </nav>
 {/* 

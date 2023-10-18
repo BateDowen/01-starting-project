@@ -1,5 +1,5 @@
 import { Link, Outlet, useParams } from "react-router-dom";
-import { getAll } from "../../Utils/utils";
+import * as authService from "../../Utils/utils";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spiner";
 
@@ -10,7 +10,8 @@ const PackagesPage = () => {
   const [spinner, setSpinner] = useState(true);
   
   useEffect(() => {
-    getAll().then((res) => {
+    authService.getAll().then((res) => {
+      console.log(res);
       setPackages(
         res["-NfW1NX3j5b-YBEoBkRl"].map((x) => {
           return (

@@ -14,6 +14,9 @@ import ErrorPage from "./components/travel-agency-html-template/ErrorPage/ErrorP
 import PackagesPage from "./components/travel-agency-html-template/PackagePage.js/PackagePage";
 import Booking from "./components/travel-agency-html-template/PackagePage.js/Booking";
 import Register from "./components/travel-agency-html-template/Register/Register";
+import Slider from "./components/travel-agency-html-template/Slider/Slider";
+import Login from "./components/travel-agency-html-template/Login/Login";
+import { AuthContextProvider } from "./components/travel-agency-html-template/contexts/auth-context";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/slider',
+        element: <Slider/>
       }
       
     ],
@@ -55,7 +66,9 @@ function App() {
   return (
     <div className="app">
       <Topbar/>
-      <RouterProvider router={router} />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
       <Footer/>
     </div>
   );
