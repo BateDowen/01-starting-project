@@ -2,11 +2,12 @@ import { Link, NavLink, Outlet, Route, useNavigate} from "react-router-dom";
 import Slider from "../Slider/Slider";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth-context";
+import { logout } from "../../Utils/utils";
 
 const Navbar = () => {
   let navigate = useNavigate();
   const authCtx = useContext(AuthContext);
-console.log(authCtx);
+  console.log(authCtx);
   const onChangeRoute =(e) =>{
     navigate(e)
   }
@@ -71,7 +72,9 @@ console.log(authCtx);
               Contact
             </NavLink>
           </div>
-          {authCtx ? <div>Welcome, {authCtx}</div> :  
+          {authCtx.user ? <div>Welcome, {authCtx.user} <button  onClick={authCtx.logout} className="btn btn-primary rounded-pill py-2 px-4">
+              Logout
+            </button></div> :  
           <>
             <NavLink  to={`/login`} className="btn btn-primary rounded-pill py-2 px-4">
               Login

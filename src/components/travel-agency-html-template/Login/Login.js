@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import * as authService from "../../Utils/utils";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth-context";
 
 const Login = () =>{
     const navigate = useNavigate();
-
+    const autCtx = useContext(AuthContext)
     const onSubmit = (e) =>{
         e.preventDefault();
         const formData = new FormData(e.target)
@@ -17,7 +19,7 @@ const Login = () =>{
             if (user.length>0) {
                 localStorage.setItem('user',user[0].email);
                 e.target.reset();
-
+                autCtx.login()
                 navigate('/');
             }else{
                 navigate('/login');

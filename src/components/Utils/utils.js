@@ -10,3 +10,7 @@ export const login = (data) =>{
     
     return api.get('/people.json/')
 };
+export const logout = () =>{
+  localStorage.removeItem('user')
+
+}
