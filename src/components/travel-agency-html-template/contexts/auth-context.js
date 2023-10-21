@@ -5,29 +5,48 @@ export const AuthContext = createContext({email: '',logout: () =>{ },login: () =
 
 export const AuthContextProvider = (props) =>{
     const [isLoged, setIsLoged] = useState(false);
-    const user = localStorage.getItem('user');
+    const userToken = localStorage.getItem('token');
 
     useEffect(() =>{
-        if (user) {
+        if (userToken) {
             setIsLoged(true)
         }
-    },[user,isLoged]);
+    },[userToken,isLoged]);
+
     const logoutHandler = () =>{
-       authService.logout();
+        localStorage.removeItem('email');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('userId');
         setIsLoged(false);
 
     };
 
-    const loginHandler = () =>{
-        localStorage.getItem('user');
+    const loginHandler = (email, accessToken, id,username) =>{
+        localStorage.setItem('email',email);
+        localStorage.setItem('token',accessToken);
+        localStorage.setItem('userId',id);
+        localStorage.setItem('username',username);
         setIsLoged(true);
 
     };
+    const getUserCredentials = () => {
+        const userId = localStorage.getItem('userId');
+        const userEmail = localStorage.getItem('email');
+        const username =  localStorage.getItem('username');
 
+        return { 
+            userToken,
+            userId,
+            userEmail,
+            username
+            }
+
+    };
     const ctxValue = {
-        user,
+        isLoged,
         login: loginHandler,
-        logout: logoutHandler
+        logout: logoutHandler,
+        getUserCredentials
     }
     return(
         <AuthContext.Provider value={ctxValue}>

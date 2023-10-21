@@ -7,7 +7,8 @@ import { logout } from "../../Utils/utils";
 const Navbar = () => {
   let navigate = useNavigate();
   const authCtx = useContext(AuthContext);
-  console.log(authCtx);
+  const {username} = authCtx.getUserCredentials();
+
   const onChangeRoute =(e) =>{
     navigate(e)
   }
@@ -72,7 +73,7 @@ const Navbar = () => {
               Contact
             </NavLink>
           </div>
-          {authCtx.user ? <div>Welcome, {authCtx.user} <button  onClick={authCtx.logout} className="btn btn-primary rounded-pill py-2 px-4">
+          {authCtx.isLoged ? <div>Welcome, {username} <button  onClick={''} className="btn btn-primary rounded-pill py-2 px-4">
               Logout
             </button></div> :  
           <>

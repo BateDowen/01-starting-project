@@ -11,15 +11,12 @@ const Login = () =>{
         const formData = new FormData(e.target)
         let {email, password} = Object.fromEntries(formData);
         const userData = {email, password};
-        authService.login()
-        .then(data => {
-           
-            const user = Object.values(data).filter(name => name.email === userData.email);
+        authService.login(userData)
+        .then(user => {
             
-            if (user.length>0) {
-                localStorage.setItem('user',user[0].email);
+            if (user) {
                 e.target.reset();
-                autCtx.login()
+                autCtx.login(user.email, user.accessToken, user._id,user.username)
                 navigate('/');
             }else{
                 navigate('/login');

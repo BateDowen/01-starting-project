@@ -8,9 +8,9 @@ export const register = (data) =>{
 };
 export const login = (data) =>{
     
-    return api.get('/people.json/')
+    return api.post('/users/login',data)
 };
 export const logout = () =>{
-  localStorage.removeItem('user')
+  
 
 }
