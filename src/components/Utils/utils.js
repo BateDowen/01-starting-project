@@ -11,6 +11,6 @@ export const login = (data) =>{
     return api.post('/users/login',data)
 };
 export const logout = () =>{
-  
+  api.get('/users/logout')
 
 }

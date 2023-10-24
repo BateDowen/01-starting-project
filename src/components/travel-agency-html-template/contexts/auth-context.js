@@ -14,28 +14,29 @@ export const AuthContextProvider = (props) =>{
     },[userToken,isLoged]);
 
     const logoutHandler = () =>{
-        localStorage.removeItem('email');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('userId');
+        localStorage.removeItem('user');
+        
+
         setIsLoged(false);
 
     };
 
-    const loginHandler = (email, accessToken, id,username) =>{
-        localStorage.setItem('email',email);
-        localStorage.setItem('token',accessToken);
-        localStorage.setItem('userId',id);
-        localStorage.setItem('username',username);
+    const loginHandler = (data) =>{
+        localStorage.setItem('user',data);
+        
         setIsLoged(true);
 
     };
     const getUserCredentials = () => {
-        const userId = localStorage.getItem('userId');
-        const userEmail = localStorage.getItem('email');
-        const username =  localStorage.getItem('username');
+        const { 
+            accessToken,
+            userId,
+            userEmail,
+            username
+            } = JSON.parse(localStorage.getItem('user'))
 
         return { 
-            userToken,
+            accessToken,
             userId,
             userEmail,
             username

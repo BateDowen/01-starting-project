@@ -1,0 +1,28 @@
+.overlayDiv{
+    background-color: rgba(0,0,0,0.7);
+    position:fixed;
+    width: 100%;
+    height: 100%;
+}
+.modalContainer{
+    max-width: 600px;
+    width: 100%;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    background-color: white;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
+}
+.children{
+    position:fixed;
+    font-weight: 800;
+    color: yellowgreen;
+}
+.closeBtn{
+    color: aliceblue;
+    position: fixed;
+    top: 8px;
+    right: 8px;
+}

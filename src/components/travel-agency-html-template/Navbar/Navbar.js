@@ -1,14 +1,35 @@
 import { Link, NavLink, Outlet, Route, useNavigate} from "react-router-dom";
 import Slider from "../Slider/Slider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/auth-context";
-import { logout } from "../../Utils/utils";
+import * as authService from "../../Utils/utils"
+import Modal from "../../Utils/Modal";
 
 const Navbar = () => {
   let navigate = useNavigate();
   const authCtx = useContext(AuthContext);
-  const {username} = authCtx.getUserCredentials();
+  const [openModal, setOpenModal] = useState(false)
+  let username;
+  if(authCtx.isLoged){
+    const {getUserCredentials} = authCtx;
+    const userInfo = getUserCredentials();
+    username = userInfo.username
 
+  }
+  console.log(username);
+  const Logout = (e) =>{
+    e.preventDefault();
+    try {
+      
+      authService.logout();
+      authCtx.logout();
+      setOpenModal(true)
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+   // TODO: pop up window 
+};
   const onChangeRoute =(e) =>{
     navigate(e)
   }
@@ -73,7 +94,7 @@ const Navbar = () => {
               Contact
             </NavLink>
           </div>
-          {authCtx.isLoged ? <div>Welcome, {username} <button  onClick={''} className="btn btn-primary rounded-pill py-2 px-4">
+          {authCtx.isLoged ? <div>Welcome, {username} <button  onClick={Logout} className="btn btn-primary rounded-pill py-2 px-4">
               Logout
             </button></div> :  
           <>
@@ -116,6 +137,7 @@ const Navbar = () => {
         </div>
       </div> */}
       <div id="detail">
+        <Modal open={openModal} onClose={() => setOpenModal(false)}/><Modal />
         <Outlet />
       </div>
     </div>

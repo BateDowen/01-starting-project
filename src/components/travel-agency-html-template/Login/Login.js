@@ -13,10 +13,10 @@ const Login = () =>{
         const userData = {email, password};
         authService.login(userData)
         .then(user => {
-            
+            console.log(user);
             if (user) {
                 e.target.reset();
-                autCtx.login(user.email, user.accessToken, user._id,user.username)
+                autCtx.login(JSON.stringify(user))
                 navigate('/');
             }else{
                 navigate('/login');
@@ -30,7 +30,7 @@ const Login = () =>{
     }
     return (
 <form
-      style={{ maxWidth: "450px", paddingLeft: "100px", marginTop: "15px" }}
+      style={{ maxWidth: "450px", paddingLeft: "100px", marginTop: "15px", zIndex: '-1' }}
       onSubmit={onSubmit}
     >
       {/* <div className="col-lg-3 col-md-6" style={{ paddingLeft: "100px" }}>
@@ -45,7 +45,7 @@ const Login = () =>{
           className="form-control border-primary w-100 py-3 ps-4 pe-5"
           type="email"
           name="email"
-          defaultValue="Your email"
+          defaultValue=""
         //   onChange={onChangeHandler}
         />
         <label htmlFor="password"></label>
@@ -53,7 +53,7 @@ const Login = () =>{
           className="form-control border-primary w-100 py-3 ps-4 pe-5"
           type="password"
           name="password"
-          defaultValue="Enter password"
+          defaultValue=""
         />
         <label htmlFor="remember" style={{margin: '5px'}}>Remeber me</label>
         <input type="checkbox" name="remember" style={{margin: '15px'}} 
