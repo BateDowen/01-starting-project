@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import * as authService from "../../Utils/utils";
 
 export const AuthContext = createContext({email: '',logout: () =>{ },login: () =>{ }});
@@ -54,4 +54,11 @@ export const AuthContextProvider = (props) =>{
             {props.children}
         </AuthContext.Provider>
     )
+}
+
+//cuustom hook for context usage:
+
+export const useAuth = () =>{
+    const authState = useContext(AuthContext);
+    return authState;
 }

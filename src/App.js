@@ -1,4 +1,5 @@
 import {
+  Outlet,
   Route,
   RouterProvider,
   Routes,
@@ -17,63 +18,76 @@ import Register from "./components/travel-agency-html-template/Register/Register
 import Slider from "./components/travel-agency-html-template/Slider/Slider";
 import Login from "./components/travel-agency-html-template/Login/Login";
 import { AuthContextProvider } from "./components/travel-agency-html-template/contexts/auth-context";
+import Modal2 from "./components/Modal2/Modal2";
+import Welcome from "./components/Welcome/Welcome";
+import Modal from "./components/Utils/Modal";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Navbar />,
     children: [
       {
-        path: '/',
-        element: <HomePage />
+        path: "/",
+        element: <HomePage />,
       },
       {
-        path: '/about',
-        element: <AboutPage />
+        path: "/welcome",
+        element:( 
+            <>
+            <Welcome />
+            <Outlet  />
+            </>
+        ),
+        children: [
+          {path: 'modal', element: <Modal2 />}
+        ]
       },
       {
-        path: '/packages',
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/packages",
         element: <PackagesPage />,
-        
       },
       {
-        path: '/booking/:id',
+        path: "/booking/:id",
         element: <Booking />,
       },
       {
-        path: '/service',
-        element: <ServicePage />
+        path: "/service",
+        element: <ServicePage />,
       },
       {
-        path: '/register',
-        element: <Register />
+        path: "/register",
+        element: <Register />,
       },
       {
-        path: '/login',
-        element: <Login />
+        path: "/login",
+        element: <Login />,
       },
       // {
       //   path: '/logout',
       //   element: <Logout />
       // },
       {
-        path: '/slider',
-        element: <Slider/>
-      }
-      
+        path: "/slider",
+        element: <Slider />,
+      },
     ],
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
 ]);
 
 function App() {
   return (
     <div className="app">
-      <Topbar/>
+      <Topbar />
       <AuthContextProvider>
         <RouterProvider router={router} />
       </AuthContextProvider>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

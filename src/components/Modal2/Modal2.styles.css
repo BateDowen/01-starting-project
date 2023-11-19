@@ -1,0 +1,41 @@
+.modal-backdrop {
+    /* @apply w-[100vw] h-[100vh] fixed top-0 left-0 flex justify-center items-center z-[1000]; */
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+    .modal-overlay {
+        /* @apply absolute inset-0 bg-gray-700 opacity-70; */
+        position: absolute;
+        inset: 0;
+        background-color: rgba(59, 59, 59, 0.7);
+    }
+
+    .modal-content {
+        animation: popout 400ms ease-in-out;
+    }
+    .modal-content {
+        /* @apply bg-white relative z-[1001] overflow-hidden; */
+        background-color: white;
+        position: relative;
+        z-index: 1001;
+        overflow: hidden;
+    }
+
+
+@keyframes popout {
+    0% {
+        scale: 0.3;
+    } 
+    100% {
+       scale: 1;
+    }
+}

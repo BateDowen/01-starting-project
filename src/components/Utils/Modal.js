@@ -1,4 +1,5 @@
 import './Modal.css';
+import React from 'react';
 
 const Modal = (props) =>{
 
@@ -16,4 +17,4 @@ const Modal = (props) =>{
         </div>
     )
 }
-export default Modal;
+export default React.memo(Modal);
